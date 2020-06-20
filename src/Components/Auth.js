@@ -16,7 +16,6 @@ export const Auth = ({ children }) => {
         sidebar = document.getElementsByClassName("sidebar")[0];
     })
     return (
-        // children
         <div>
             {/* #Left Sidebar ==================== */}
             <div className="sidebar" style={{ left: sideState ? "0" : "-300px" }}>
