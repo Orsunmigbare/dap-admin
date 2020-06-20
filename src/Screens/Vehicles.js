@@ -55,7 +55,7 @@ export const Vehicles = () => {
                                             <thead>
                                                 <tr >
                                                     {Object.keys(state.vehicles[0]).map((key) => (
-                                                        <th>{key}</th>
+                                                        <th>{key.replace(/_/g, " ")}</th>
                                                     ))}
                                                 </tr>
                                             </thead>

@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { message } from "antd";
-// const BASE_URL = "https://dap-back.herokuapp.com/api";
-const BASE_URL = "http://localhost:3000/api";
+const BASE_URL = "https://dap-back.herokuapp.com/api";
+// const BASE_URL = "http://localhost:3000/api";
 
 export const _axios = async ({
   method,

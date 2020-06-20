@@ -55,7 +55,7 @@ export const Owners = () => {
                                             <thead>
                                                 <tr className="pointer">
                                                     {Object.keys(state.owners[0]).map((key) => (
-                                                        <th>{key}</th>
+                                                        <th>{key.replace(/_/g, " ")}</th>
                                                     ))}
                                                 </tr>
                                             </thead>

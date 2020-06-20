@@ -55,7 +55,7 @@ export const Drivers = () => {
                       <thead>
                         <tr >
                           {Object.keys(state.drivers[0]).map((key) => (
-                            <th>{key}</th>
+                            <th>{key.replace(/_/g, " ")}</th>
                           ))}
                         </tr>
                       </thead>

@@ -1,26 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
 export const Auth = ({ children }) => {
     const history = useHistory();
+    const [sideState, setSideState] = useState(true)
     useEffect(() => {
         let token = localStorage.getItem("token");
         console.log("token --->", token)
         if (!token) {
             history.push("/auth")
         }
+    }, [])
+    let sidebar;
+    useEffect(() => {
+        sidebar = document.getElementsByClassName("sidebar")[0];
     })
     return (
         // children
         <div>
             {/* #Left Sidebar ==================== */}
-            <div className="sidebar">
+            <div className="sidebar" style={{ left: sideState ? "0" : "-300px" }}>
                 <div className="sidebar-inner">
                     {/* ### $Sidebar Header ### */}
                     <div className="sidebar-logo">
                         <div className="peers ai-c fxw-nw">
                             <div className="peer peer-greed">
-                                <a className="sidebar-link td-n" href="index.html">
+                                <a className="sidebar-link td-n" href="/">
                                     <div className="peers ai-c fxw-nw">
                                         <div className="peer">
                                             <div className="logo">
@@ -28,14 +33,14 @@ export const Auth = ({ children }) => {
                                             </div>
                                         </div>
                                         <div className="peer peer-greed">
-                                            <h5 className="lh-1 mB-0 logo-text">Adminator</h5>
+                                            <h5 className="lh-1 mB-0 logo-text">Admin</h5>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div className="peer">
                                 <div className="mobile-toggle sidebar-toggle">
-                                    <a href className="td-n">
+                                    <a href className="td-n" onClick={() => { setSideState(false) }}>
                                         <i className="ti-arrow-circle-left" />
                                     </a>
                                 </div>
@@ -169,7 +174,8 @@ export const Auth = ({ children }) => {
                                 <a
                                     id="sidebar-toggle"
                                     className="sidebar-toggle"
-                                    href="javascript:void(0);"
+                                    // href="javascript:void(0);"
+                                    onClick={() => { setSideState(true) }}
                                 >
                                     <i className="ti-menu" />
                                 </a>
