@@ -55,7 +55,7 @@ export const useAsyncHook = ({
       if (action) {
         action(response.data.data);
       }
-    message.info("response.data.message")
+    message.info(response.data.message)
       return response.data.data;
     } catch (error) {
       setLoading(false);
