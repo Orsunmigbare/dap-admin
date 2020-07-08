@@ -160,6 +160,75 @@ export const Auth = ({ children }) => {
                                 </li>
                             </ul>
                         </li>
+                        <li className="nav-item dropdown" onClick={() => { history.push("/clients") }}>
+                            <a className="dropdown-toggle" href="javascript:void(0);">
+                                <span className="icon-holder">
+                                    <i className="c-teal-500 ti-view-list-alt" />
+                                </span>
+                                <span className="title">Clients</span>
+                                <span className="arrow">
+                                    <i className="ti-angle-right" />
+                                </span>
+                            </a>
+                            <ul className="dropdown-menu">
+                                <li className="nav-item dropdown">
+                                    <a href="javascript:void(0);">
+                                        <span>Menu Item</span>
+                                    </a>
+                                </li>
+                                <li className="nav-item dropdown">
+                                    <a href="javascript:void(0);">
+                                        <span>Menu Item</span>
+                                        <span className="arrow">
+                                            <i className="ti-angle-right" />
+                                        </span>
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                            <a href="javascript:void(0);">Menu Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Menu Item</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className="nav-item dropdown" onClick={() => { history.push("/hires") }}>
+                            <a className="dropdown-toggle" href="javascript:void(0);">
+                                <span className="icon-holder">
+                                    <i className="c-teal-500 ti-view-list-alt" />
+                                </span>
+                                <span className="title">Hires</span>
+                                <span className="arrow">
+                                    <i className="ti-angle-right" />
+                                </span>
+                            </a>
+                            <ul className="dropdown-menu">
+                                <li className="nav-item dropdown">
+                                    <a href="javascript:void(0);">
+                                        <span>Menu Item</span>
+                                    </a>
+                                </li>
+                                <li className="nav-item dropdown">
+                                    <a href="javascript:void(0);">
+                                        <span>Menu Item</span>
+                                        <span className="arrow">
+                                            <i className="ti-angle-right" />
+                                        </span>
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                            <a href="javascript:void(0);">Menu Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Menu Item</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </div>
             </div>

@@ -8,6 +8,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Auth } from './Components/Auth';
 import { Owners } from './Screens/Owners';
 import { Vehicles } from './Screens/Vehicles';
+import { Clients } from './Screens/Clients';
+import { Hires } from './Screens/Hires';
 
 
 function App() {
@@ -45,12 +47,29 @@ function App() {
               <Auth>
                 <Vehicles />
               </Auth>}
-          /> <Route
+          />
+          <Route
             exact
             path="/owners"
             render={() =>
               <Auth>
                 <Owners />
+              </Auth>}
+          />
+          <Route
+            exact
+            path="/clients"
+            render={() =>
+              <Auth>
+                <Clients />
+              </Auth>}
+          />
+          <Route
+            exact
+            path="/hires"
+            render={() =>
+              <Auth>
+                <Hires />
               </Auth>}
           />
           <Route
