@@ -1596,7 +1596,7 @@ a.fc-more:hover {
 }
 
 tr {
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 table {
