@@ -1598,3 +1598,11 @@ a.fc-more:hover {
 tr {
   text-transform: capitalize;
 }
+
+table {
+  max-height: 80vh !important;
+}
+
+.table-cont {
+  height: 80vh !important;
+}

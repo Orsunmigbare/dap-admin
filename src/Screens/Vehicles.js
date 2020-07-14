@@ -47,7 +47,7 @@ export const Vehicles = () => {
                     <h4 className="c-grey-900 mT-10 mB-30">Vehicles</h4>
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="bgc-white bd bdrs-3 p-20 mB-20 overflow-auto">
+                            <div className="bgc-white bd bdrs-3 p-20 mB-20 overflow-auto table-cont">
                                 <h4 className="c-grey-900 mB-20 ">Vehicles List</h4>
                                 {loading ? "Loading ....." : state.vehicles.length ?
                                     <>

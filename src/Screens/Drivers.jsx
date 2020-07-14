@@ -60,7 +60,7 @@ export const Drivers = () => {
           <h4 className="c-grey-900 mT-10 mB-30">Drivers</h4>
           <div className="row">
             <div className="col-md-12">
-              <div className="bgc-white bd bdrs-3 p-20 mB-20 overflow-auto">
+              <div className="bgc-white bd bdrs-3 p-20 mB-20 overflow-auto table-cont">
                 <h4 className="c-grey-900 mB-20 ">Driver's List</h4>
                 {loading ? (
                   "Loading ....."
@@ -73,7 +73,7 @@ export const Drivers = () => {
                       width="100%"
                     >
                       <thead>
-                        <tr>
+                        <tr col>
                           {Object.keys(state.drivers[0]).map((key) => (
                             <th>{key.replace(/_/g, " ")}</th>
                           ))}
@@ -95,11 +95,15 @@ export const Drivers = () => {
                                   showVerifyModal(key, driver);
                                 }}
                               >
-                                {" "}
+                                {console.log("key ---->", key, driver[key])}
                                 {key === "verification_status"
                                   ? driver[key] === 0
                                     ? "Unverified"
                                     : "Verified"
+                                  : key === "date_of_birth"
+                                  ? new Date(
+                                      parseInt(driver[key])
+                                    ).toDateString()
                                   : driver[key]}{" "}
                               </td>
                             ))}
@@ -153,7 +157,7 @@ export const Drivers = () => {
             {" "}
             {currentPrev.firstname} {currentPrev.lastname}{" "}
           </h4>
-          <span  className="text-center">
+          <span className="text-center">
             {" "}
             Phone : <span className="text-bold"> {currentPrev.phone}</span>
           </span>
@@ -163,10 +167,32 @@ export const Drivers = () => {
           </span>
           <span className="text-center">
             {" "}
-            Verification Status : <span className="text-bold"> {currentPrev.verification_status === 0? "Unverified" : "Verified"}</span>
+            Verification Status :{" "}
+            <span className="text-bold">
+              {" "}
+              {currentPrev.verification_status === 0
+                ? "Unverified"
+                : "Verified"}
+            </span>
           </span>
 
-          {currentPrev.verification_status === 0 ? <Button className="my-5 bg-primary text-white" loading={loading_verifying} onClick={() => { verifyDriver().then(() => { getPage(state.current_page); setVisible(false)})}}> Verify Driver</Button> : ""}
+          {currentPrev.verification_status === 0 ? (
+            <Button
+              className="my-5 bg-primary text-white"
+              loading={loading_verifying}
+              onClick={() => {
+                verifyDriver().then(() => {
+                  getPage(state.current_page);
+                  setVisible(false);
+                });
+              }}
+            >
+              {" "}
+              Verify Driver
+            </Button>
+          ) : (
+            ""
+          )}
         </div>
       </Modal>
     </main>
