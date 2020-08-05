@@ -13,7 +13,7 @@ export const Drivers = () => {
   const [currentPrev, setPrev] = useState({});
   const [visible, setVisible] = useState(false);
   let [getDrivers, error, loading] = useAsyncHook({
-    endpoint: `admin/drivers?page=${state.query_page}`,
+    endpoint: `admin/drivers`,
     method: "get",
   });
 
@@ -23,7 +23,7 @@ export const Drivers = () => {
   });
   const getPage = (i) => {
     setState({ ...state, query_page: i });
-    getDrivers().then((res) => {
+    getDrivers(null, `page=${i || state.query_page}`).then((res) => {
       setState({
         ...state,
         drivers: res.drivers,
@@ -33,7 +33,7 @@ export const Drivers = () => {
     });
   };
   useEffect(() => {
-    getDrivers().then((res) => {
+    getDrivers(null, `page=${state.query_page}`).then((res) => {
       setState({
         ...state,
         drivers: res.drivers,

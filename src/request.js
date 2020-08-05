@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { message } from "antd";
-const BASE_URL = "https://dap-back.herokuapp.com/api";
-// const BASE_URL = "http://localhost:3000/api";
+// const BASE_URL = "https://dap-back.herokuapp.com/api";
+const BASE_URL = "http://localhost:3000/api";
 
 export const _axios = async ({
   method,
@@ -10,11 +10,13 @@ export const _axios = async ({
   data,
   fromData,
   absolute,
+  query
 }) => {
   let token = localStorage.getItem("token");
+  console.log("query --->", query)
   return axios({
     method,
-    url: absolute ? endpoint : `${BASE_URL}/${endpoint}`,
+    url: query ? `${BASE_URL}/${endpoint}?${query}` : absolute ? endpoint : `${BASE_URL}/${endpoint}`,
     data,
     headers: {
       Accept: "application/json",
@@ -22,8 +24,8 @@ export const _axios = async ({
       Authorization: `Bearer ${token}`,
     },
   }).catch((e) => {
-      if (!e.response) {
-        message.error("No internet connection, please check your network");
+    if (!e.response) {
+      message.error("No internet connection, please check your network");
     } else {
       throw e;
     }
@@ -40,7 +42,7 @@ export const useAsyncHook = ({
   const [result, setResult] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
-  const getQuery = async (qdata) => {
+  const getQuery = async (qdata, query = null) => {
     try {
       setLoading(true);
       const response = await _axios({
@@ -49,13 +51,14 @@ export const useAsyncHook = ({
         endpoint,
         data: qdata,
         fromData: fromData || false,
+        query
       });
       setLoading(false);
       setResult(response.data.data);
       if (action) {
         action(response.data.data);
       }
-    message.info(response.data.message)
+      message.info(response.data.message)
       return response.data.data;
     } catch (error) {
       setLoading(false);
