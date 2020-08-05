@@ -11,14 +11,14 @@ export const Clients = () => {
     });
 
     let [getDrivers, error, loading] = useAsyncHook({
-        endpoint: `admin/clients?page=${state.query_page}`,
+        endpoint: `admin/clients`,
         method: "get",
     })
 
 
     const getPage = (i) => {
         setState({ ...state, query_page: i });
-        getDrivers()
+        getDrivers(null, `page=${i || state.query_page}`)
             .then((res) => {
                 setState({
                     clients: res.clients,
@@ -28,7 +28,7 @@ export const Clients = () => {
             })
     }
     useEffect(() => {
-        getDrivers()
+        getDrivers(null, `page=${state.query_page}`)
             .then((res) => {
                 console.log("res --->", res)
                 setState({
